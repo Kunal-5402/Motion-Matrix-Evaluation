@@ -20,7 +20,7 @@ __DEMO__
 ## Tech Stack
 * Mediapipe:
 * opencv
-* dtaidistance
+* fastdtw
 
 	
 
