@@ -63,7 +63,7 @@ def capture():
         cam_arr.append(res)
         cv2.imshow("image",frame)        
         end = time.time()
-        if(int(end)-int(start) == 7):
+        if(int(end)-int(start) == 5):
             break
         cv2.waitKey(1)
     cap.release()
@@ -118,5 +118,5 @@ if __name__ == '__main__':
     res = norm(result)
     arr = capture()
     acc = norm(arr)
-    score=final_score_cal(res,acc)
-    print("Final Score is : ",score)
+    percentage=final_score_cal(res,acc)
+    print("Final Similarity Percentage : ",percentage)
