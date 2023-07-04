@@ -31,8 +31,7 @@ Bodytracking to compare two 5-second dance videos and generate a score.
 This model is used to score motion and action using Dynamic Time Wraping and posture dectection. It can be used in various applications like dance training, gym tutor. 
 
 ## Running Instruction
-Firstly download Anaconda using https://docs.anaconda.com/free/anaconda/install/
-then open terminal and type the following 
+Firstly download Anaconda using https://docs.anaconda.com/free/anaconda/install/ and then open the terminal to type the following commands
 ```
 $ git clone https://github.com/Ayush152/motion-matrix-evaluation.git
 $ cd motion-matrix-evaluation/
