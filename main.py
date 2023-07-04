@@ -3,8 +3,8 @@ import cv2
 import time 
 import numpy as np
 from fastdtw import fastdtw  #library to calculate the distance using dynamic time wraping 
-from dtaidistance import dtw_ndim
-from dtaidistance import dtw 
+# from dtaidistance import dtw_ndim
+# from dtaidistance import dtw 
 
 def play():
     """
@@ -17,7 +17,7 @@ def play():
     
     """
     cap = cv2.VideoCapture('./video/5.mp4')
-    ############## change color in pose for video 2##################3
+    ############## change color in pose for video 2 ##################
     pTime=0
     detector = p.poseDetect()
     landmarks=[]
@@ -25,7 +25,7 @@ def play():
     m=[]
     while True:
         ret,frame= cap.read()
-        a= a+1
+        a = a+1
         success,img =cap.read()
         if success==True:
             img = detector.findPose(img)
@@ -52,7 +52,7 @@ def capture():
 
     detector = p.poseDetect()
     cam_arr= []
-    cap = cv2.VideoCapture("./video/5.mp4")
+    cap = cv2.VideoCapture(0)
     ret= cap.set(3,640)
     ret= cap.set(4,352)
     start = time.time()
@@ -63,7 +63,7 @@ def capture():
         cam_arr.append(res)
         cv2.imshow("image",frame)        
         end = time.time()
-        if(int(end)-int(start) ==5):
+        if(int(end)-int(start) == 7):
             break
         cv2.waitKey(1)
     cap.release()
@@ -106,8 +106,12 @@ def final_score_cal(res,acc):
     range_min = min(score)
     range_max = max(score)
     range_ = range_max - range_min
-    mean =np.mean(score)
-    return mean
+    # mean =np.mean(score)
+    normalized_scores = [(s - range_min) / range_ for s in score]
+
+    mean_similarity = 1 - np.mean(normalized_scores)
+    return mean_similarity * 100  # Convert to percentage
+    # return mean
 
 if __name__ == '__main__':
     result = play()
